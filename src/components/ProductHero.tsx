@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Award } from "lucide-react";
+import Navigation from "./Navigation";
 
 const ProductHero = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -23,8 +24,10 @@ const ProductHero = () => {
 
   return (
     <>
+      <Navigation />
+      
       {/* Hero Section */}
-      <section className="relative min-h-screen overflow-hidden">
+      <section className="relative min-h-screen overflow-hidden pt-20">
         {/* Animated Mesh Background */}
         <div 
           className="absolute inset-0 opacity-30"
@@ -37,7 +40,7 @@ const ProductHero = () => {
         {/* Radial Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-radial opacity-20" />
         
-        <div className="relative z-10 container mx-auto px-6 h-screen flex items-center">
+        <div className="relative z-10 container mx-auto px-6 min-h-screen flex items-center">
           <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
             
             {/* Content */}
@@ -106,30 +109,47 @@ const ProductHero = () => {
               </div>
             </div>
 
-            {/* Product Image */}
-            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Product Image with Hover Effect */}
+            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}>
               <div 
-                className="relative group"
+                className="relative group cursor-pointer"
                 style={{
                   transform: `translateY(${parallaxOffset * -0.2}px)`,
                   opacity: fadeOpacity
                 }}
               >
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-glow opacity-0 group-hover:opacity-100 transition-opacity duration-700 scale-150" />
-                
-                {/* Main Product Image */}
-                <div className="relative z-10">
+                {/* Unlit Version */}
+                <div className="relative transition-opacity duration-700 group-hover:opacity-0">
                   <img
                     src="/lovable-uploads/a738410a-4301-496f-b774-628c90f41c2b.png"
-                    alt="EdgeLuxe LP 3.1 Channel Letter"
+                    alt="EdgeLuxe LP 3.1 - Unlit"
                     className="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
                   />
+                  <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <span className="text-white text-sm font-medium">Daylight View</span>
+                  </div>
+                </div>
+                
+                {/* Lit Version - Overlay */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                  <img
+                    src="/lovable-uploads/75f6fbe0-fed3-4fa6-87e3-009666c5ce78.png"
+                    alt="EdgeLuxe LP 3.1 - Illuminated"
+                    className="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute bottom-4 right-4 bg-primary/80 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <span className="text-white text-sm font-medium">Night Illumination</span>
+                  </div>
                   
-                  {/* Electric Glow on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-lg blur-xl" />
+                  {/* Enhanced Glow Effect */}
+                  <div className="absolute inset-0 bg-gradient-glow opacity-60 rounded-2xl" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 opacity-100 rounded-lg blur-2xl scale-110" />
                 </div>
               </div>
+              
+              <p className="text-center mt-6 text-muted-foreground italic">
+                Hover to see illumination effect
+              </p>
             </div>
           </div>
         </div>
@@ -204,86 +224,44 @@ const ProductHero = () => {
         </div>
       </section>
 
-      {/* Showcase Section */}
+      {/* Performance Section */}
       <section className="relative py-40 overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            
-            {/* Before/After Images */}
-            <div className="relative">
-              <div className="relative group cursor-pointer">
-                {/* Unlit Version */}
-                <div className="relative transition-opacity duration-700 group-hover:opacity-0">
-                  <img
-                    src="/lovable-uploads/a738410a-4301-496f-b774-628c90f41c2b.png"
-                    alt="Channel Letter - Unlit"
-                    className="w-full h-auto rounded-2xl shadow-2xl"
-                  />
-                  <div className="absolute bottom-4 left-4 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="text-white text-sm font-medium">Daylight View</span>
-                  </div>
+          <div className="text-center space-y-8">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                Day & Night
+              </span>
+              <br />
+              <span className="text-foreground">Performance</span>
+            </h2>
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Experience the dramatic transformation from sophisticated daytime presence 
+              to stunning nighttime illumination. Our EdgeLuxe LP 3.1 delivers 
+              exceptional visibility and brand impact around the clock.
+            </p>
+
+            <div className="grid md:grid-cols-4 gap-8 mt-16">
+              {[
+                { label: "Lumens Output", value: "2,400 LM" },
+                { label: "Color Temperature", value: "3000K-6500K" },
+                { label: "Energy Efficiency", value: "95% LED" },
+                { label: "Operating Temp", value: "-40°F to 185°F" }
+              ].map((spec, index) => (
+                <div key={index} className="text-center p-6 rounded-2xl bg-card/30 backdrop-blur-sm border border-border/50">
+                  <div className="text-3xl font-bold text-primary mb-2">{spec.value}</div>
+                  <div className="text-muted-foreground">{spec.label}</div>
                 </div>
-                
-                {/* Lit Version - Overlay */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <img
-                    src="/lovable-uploads/75f6fbe0-fed3-4fa6-87e3-009666c5ce78.png"
-                    alt="Channel Letter - Illuminated"
-                    className="w-full h-auto rounded-2xl shadow-2xl"
-                  />
-                  <div className="absolute bottom-4 left-4 bg-primary/80 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <span className="text-white text-sm font-medium">Night Illumination</span>
-                  </div>
-                  
-                  {/* Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-glow opacity-50 rounded-2xl" />
-                </div>
-              </div>
-              
-              <p className="text-center mt-6 text-muted-foreground italic">
-                Hover to see illumination effect
-              </p>
+              ))}
             </div>
 
-            {/* Content */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-5xl font-bold mb-6">
-                  <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                    Day & Night
-                  </span>
-                  <br />
-                  <span className="text-foreground">Performance</span>
-                </h2>
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  Experience the dramatic transformation from sophisticated daytime presence 
-                  to stunning nighttime illumination. Our EdgeLuxe LP 3.1 delivers 
-                  exceptional visibility and brand impact around the clock.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {[
-                  { label: "Lumens Output", value: "2,400 LM" },
-                  { label: "Color Temperature", value: "3000K-6500K" },
-                  { label: "Energy Efficiency", value: "95% LED" },
-                  { label: "Operating Temp", value: "-40°F to 185°F" }
-                ].map((spec, index) => (
-                  <div key={index} className="flex justify-between items-center py-3 border-b border-border/30">
-                    <span className="text-muted-foreground">{spec.label}</span>
-                    <span className="font-semibold text-primary">{spec.value}</span>
-                  </div>
-                ))}
-              </div>
-
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="w-full border-primary/50 hover:bg-primary/10 text-lg py-6"
-              >
-                Download Full Specifications
-              </Button>
-            </div>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="border-primary/50 hover:bg-primary/10 text-lg py-6 px-8 mt-12"
+            >
+              Download Full Specifications
+            </Button>
           </div>
         </div>
       </section>
