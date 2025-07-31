@@ -264,7 +264,9 @@ const ProductHero = () => {
                 }`}
                 style={{
                   background: 'var(--gradient-card)',
-                  transform: `translateY(${scrollY * (0.03 + index * 0.01)}px) ${visibleCards[index] ? 'translateY(0) scale(1)' : 'translateY(48px) scale(0.95)'}`,
+                  transform: visibleCards[index] 
+                    ? `translateY(${scrollY * (0.03 + index * 0.01)}px)` 
+                    : `translateY(${scrollY * (0.03 + index * 0.01) + 48}px) scale(0.95)`,
                   transitionDelay: `${index * 200}ms`
                 }}
               >
@@ -329,7 +331,9 @@ const ProductHero = () => {
                     visibleSpecs[index] ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
                   }`}
                   style={{
-                    transform: `translateY(${scrollY * (0.02 + index * 0.005)}px) ${visibleSpecs[index] ? 'translateY(0) scale(1)' : 'translateY(32px) scale(0.95)'}`,
+                    transform: visibleSpecs[index] 
+                      ? `translateY(${scrollY * (0.02 + index * 0.005)}px)` 
+                      : `translateY(${scrollY * (0.02 + index * 0.005) + 32}px) scale(0.95)`,
                     transitionDelay: `${index * 150}ms`
                   }}
                 >
