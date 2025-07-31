@@ -123,7 +123,7 @@ const ProductHero = () => {
                   <img
                     src="/lovable-uploads/a738410a-4301-496f-b774-628c90f41c2b.png"
                     alt="EdgeLuxe LP 3.1 - Unlit"
-                    className="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 rounded-3xl"
                   />
                   <div className="absolute bottom-4 right-4 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span className="text-white text-sm font-medium">Daylight View</span>
@@ -135,15 +135,11 @@ const ProductHero = () => {
                   <img
                     src="/lovable-uploads/75f6fbe0-fed3-4fa6-87e3-009666c5ce78.png"
                     alt="EdgeLuxe LP 3.1 - Illuminated"
-                    className="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-auto drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 rounded-3xl"
                   />
                   <div className="absolute bottom-4 right-4 bg-primary/80 backdrop-blur-sm px-4 py-2 rounded-full">
                     <span className="text-white text-sm font-medium">Night Illumination</span>
                   </div>
-                  
-                  {/* Enhanced Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-glow opacity-60 rounded-2xl" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 opacity-100 rounded-lg blur-2xl scale-110" />
                 </div>
               </div>
               
