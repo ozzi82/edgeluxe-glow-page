@@ -6,7 +6,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: "Products", href: "#products" },
+    { label: "Products", href: "/products" },
     { label: "About", href: "#about" },
     { label: "Gallery", href: "#gallery" },
     { label: "Contact", href: "#contact" }
