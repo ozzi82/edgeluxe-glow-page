@@ -4,23 +4,14 @@ import { ArrowRight, Zap, Shield, Award } from "lucide-react";
 import Navigation from "./Navigation";
 
 const ProductHero = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    
     const timer = setTimeout(() => setIsVisible(true), 500);
-    
     return () => {
-      window.removeEventListener("scroll", handleScroll);
       clearTimeout(timer);
     };
   }, []);
-
-  const parallaxOffset = scrollY * 0.5;
-  const fadeOpacity = Math.max(0, 1 - scrollY * 0.002);
 
   return (
     <>
@@ -32,8 +23,7 @@ const ProductHero = () => {
         <div 
           className="absolute inset-0 opacity-30"
           style={{
-            background: 'var(--gradient-mesh)',
-            transform: `translateY(${parallaxOffset * 0.3}px)`
+            background: 'var(--gradient-mesh)'
           }}
         />
         
@@ -113,10 +103,6 @@ const ProductHero = () => {
             <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'}`}>
               <div 
                 className="relative group cursor-pointer"
-                style={{
-                  transform: `translateY(${parallaxOffset * -0.2}px)`,
-                  opacity: fadeOpacity
-                }}
               >
                 {/* Unlit Version */}
                 <div className="relative transition-opacity duration-700 group-hover:opacity-0">
