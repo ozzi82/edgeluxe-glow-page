@@ -136,15 +136,6 @@ const ProductHero = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-          <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-card/80 backdrop-blur-md border border-border/60 shadow-lg ring-1 ring-primary/20">
-            <div className="w-6 h-10 border-2 border-foreground/60 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
-            </div>
-            <p className="text-sm text-foreground/90">Scroll to explore</p>
-          </div>
-        </div>
       </section>
 
       {/* Features Grid */}
